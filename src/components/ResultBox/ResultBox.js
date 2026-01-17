@@ -17,11 +17,18 @@ const ResultBox = ({ from, to, amount }) => {
     [amount, from],
   );
 
-  return (
-    <div className={styles.result}>
-      {formattedAmount} = {convertedAmount}
-    </div>
-  );
+  if (amount < 0) {
+    return (
+      <div data-testid='output' className={styles.result}>
+        Wrong value...
+      </div>
+    );
+  } else
+    return (
+      <div data-testid='output' className={styles.result}>
+        {formattedAmount} = {convertedAmount}
+      </div>
+    );
 };
 
 ResultBox.propTypes = {
